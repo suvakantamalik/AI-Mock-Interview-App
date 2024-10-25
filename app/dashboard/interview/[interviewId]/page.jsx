@@ -26,7 +26,7 @@ function Interview({ params }) {
 
         // console.log(params)
         // console.log(MockInterview.mockId)
-        console.log(result)
+        // console.log(result)
         setInterviewData(result[0]);
     }
     

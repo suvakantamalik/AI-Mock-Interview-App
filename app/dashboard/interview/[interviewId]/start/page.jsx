@@ -10,8 +10,8 @@ import Link from 'next/link';
 
 function StartInterview({ params }) {
 
-  const [interviewData, setInterviewData] = useState();
-  const [mockInterviewQuestion, setMockInterviewQuestion] = useState();
+  const [interviewData, setInterviewData] = useState({});
+  const [mockInterviewQuestion, setMockInterviewQuestion] = useState([]);
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function StartInterview({ params }) {
 
     const jsonMockResp = JSON.parse(result[0].jsonMockResp)
 
-    console.log(result[0].mockId);
+    // console.log(result[0].mockId);
     setMockInterviewQuestion(jsonMockResp);
     setInterviewData(result[0]);
 
@@ -48,11 +48,11 @@ function StartInterview({ params }) {
         />
 
         {/* Video/Audio recording */}
-        <RecordAnsSection
+        {interviewData && <RecordAnsSection
           mockInterviewQuestion={mockInterviewQuestion}
           activeQuestionIndex={activeQuestionIndex}
           interviewData={interviewData}
-        />
+        />}
       </div>
 
       <div className='flex justify-end gap-6'>
